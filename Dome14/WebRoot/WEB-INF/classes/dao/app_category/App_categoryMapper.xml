@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="dao.app_category.App_categoryMapper">
+	<select id="getCategory" resultType="App_category">
+		SELECT id,categoryName FROM app_category WHERE 1=1
+		<if test="parentId==0 or parentId==''">
+			and parentId IS NULL
+		</if>
+		<if test="parentId!=0">
+			and parentId=#{parentId}
+		</if>
+	</select>
+</mapper>
+ 
+ 
+ 
